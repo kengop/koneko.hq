@@ -6,4 +6,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="list">
+    <item>星</item>
+    <item>登録日</item>
+    <item>出版日</item>
+    </string-array>
 </resources>

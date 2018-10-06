@@ -8,6 +8,10 @@
             android:id="@+id/nav_googlescholar"
             android:icon="@drawable/ic_googlescholar"
             android:title="Google Scholar" />
+        <item
+            android:id="@+id/nav_trashbox"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Trash" />
 
     </group>
 

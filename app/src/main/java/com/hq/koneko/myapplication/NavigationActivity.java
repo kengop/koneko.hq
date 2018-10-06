@@ -19,10 +19,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         AdapterView.OnItemClickListener {
+
+    private ArrayAdapter<ArticleData> _adapterX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,23 +56,23 @@ public class NavigationActivity extends AppCompatActivity
         ListView myListView = (ListView) findViewById(R.id.myListView);
 
         // データを準備
-        ArrayList<String> items = new ArrayList<>();
+        ArrayList<ArticleData> items = new ArrayList<>();
         for(ArticleData article : Store.getInstance().Data) {
-            items.add(article.Title);
+            items.add(article);
         }
 
-        // Adapter - ArrayAdapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        this._adapterX = new ArticleListAdapter(
                 this,
                 R.layout.list_item,
                 items
         );
 
         // ListViewに表示
-        myListView.setAdapter(adapter);
+        myListView.setAdapter(this._adapterX);
 
         // クリックリスナーをセット
         myListView.setOnItemClickListener(this);
+
     }
 
     @Override

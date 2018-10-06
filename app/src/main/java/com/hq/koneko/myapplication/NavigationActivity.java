@@ -14,9 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class NavigationActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        AdapterView.OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,28 @@ public class NavigationActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        /** 一覧 */
+        ListView myListView = (ListView) findViewById(R.id.myListView);
+
+        // データを準備
+        ArrayList<String> items = new ArrayList<>();
+        for(ArticleData article : Store.getInstance().Data) {
+            items.add(article.Title);
+        }
+
+        // Adapter - ArrayAdapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this,
+                R.layout.list_item,
+                items
+        );
+
+        // ListViewに表示
+        myListView.setAdapter(adapter);
+
+        // クリックリスナーをセット
+        myListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -101,5 +129,20 @@ public class NavigationActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Intent intent = new Intent(
+                this.getApplicationContext(), MainActivity.class); // ここで詳細の画面を指定する
+
+        // 詳細に渡すデータをここで決める
+        // hint: positionはタップした行の番号
+//        ArticleData data = Store.getInstance().Data.get(position);
+        // インテントにセット
+//        intent.putExtra("Id", _ここうめる_);
+
+        // SubActivityへ遷移
+        startActivity(intent);
     }
 }

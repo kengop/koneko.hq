@@ -1,5 +1,7 @@
 package com.hq.koneko.myapplication;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -82,6 +84,12 @@ public class NavigationActivity extends AppCompatActivity
 
         if (id == R.id.nav_googlescholar) {
             // Handle the camera action
+
+            // Handle the googlescholar action
+            Uri uri = Uri.parse("https://scholar.google.co.jp");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+            return true;
         } else if (id == R.id.nav_trashbox) {
 
         } else if (id == R.id.nav_share) {

@@ -91,4 +91,8 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="textview">TextView</string>
+    <string name="title_activity_scrolling2">ScrollingActivity2</string>
+    <string name="memo">Memo</string>
 </resources>

@@ -30,6 +30,14 @@
             android:name=".ScrollingActivity2"
             android:label="@string/title_activity_scrolling2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".RegisterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

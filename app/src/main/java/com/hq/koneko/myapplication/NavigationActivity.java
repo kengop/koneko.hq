@@ -134,7 +134,7 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Intent intent = new Intent(
-                this.getApplicationContext(), MainActivity.class); // ここで詳細の画面を指定する
+                this.getApplicationContext(), ScrollingActivity2.class); // ここで詳細の画面を指定する
 
         // 詳細に渡すデータをここで決める
         // hint: positionはタップした行の番号

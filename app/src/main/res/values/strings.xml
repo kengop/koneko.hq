@@ -101,8 +101,8 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="list">
-    <item>星</item>
-    <item>登録日</item>
-    <item>出版日</item>
+        <item>登録日順</item>
+        <item>出版日順</item>
+        <item>星順</item>
     </string-array>
 </resources>

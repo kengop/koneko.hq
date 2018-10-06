@@ -22,69 +22,72 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="52dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                android:text="検索"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <EditText
                 android:id="@+id/editText3"
-                android:layout_width="241dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="239dp"
+                android:layout_height="59dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="キーワード"
-                app:layout_constraintBaseline_toBaselineOf="@+id/button7"
-                app:layout_constraintEnd_toStartOf="@+id/button7" />
+                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="112dp"
-                android:layout_height="38dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="111dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="80dp"
                 android:text="詳細検索"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@+id/spinner"
                 app:layout_constraintEnd_toStartOf="@+id/spinner"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
-                app:layout_constraintTop_toBottomOf="@+id/editText3"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toEndOf="@+id/button"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="165dp"
                 android:layout_height="29dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
                 android:entries="@array/list"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/button8"
                 app:layout_constraintTop_toBottomOf="@+id/editText3"
-                app:layout_constraintVertical_bias="0.333" />
+                app:layout_constraintVertical_bias="0.285" />
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="39dp"
-                android:layout_height="41dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button8"
+                android:id="@+id/imageButton2"
+                android:layout_width="33dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/editText3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="54dp"
+                android:layout_height="57dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="上下反転"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText3"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@android:drawable/ic_menu_sort_alphabetically" />
+                app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
         </android.support.constraint.ConstraintLayout>
 

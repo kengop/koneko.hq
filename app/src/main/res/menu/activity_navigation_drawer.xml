@@ -6,11 +6,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_googlescholar"
-            android:icon="@drawable/ic_googlescholar"
+            android:icon="?android:attr/actionModeWebSearchDrawable"
             android:title="Google Scholar" />
         <item
             android:id="@+id/nav_trashbox"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@android:drawable/ic_menu_delete"
             android:title="Trash" />
 
     </group>

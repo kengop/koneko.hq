@@ -3,6 +3,7 @@ package com.hq.koneko.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -31,5 +32,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    /** アプリを閉じるときはこのメソッドを呼んであげる */
+    public void closeApplication(View view) {
+        finish();
+        moveTaskToBack(true);
     }
 }

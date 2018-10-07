@@ -18,7 +18,7 @@
 
         <RatingBar
             android:id="@+id/ratingBar2"
-            style="@android:style/Widget.Holo.RatingBar"
+            style="@style/AppTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

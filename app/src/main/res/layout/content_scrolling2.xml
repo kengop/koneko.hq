@@ -24,6 +24,7 @@
             android:layout_weight="1"
             android:isIndicator="true"
             android:numStars="5"
+            android:padding="16dp"
             android:stepSize="0.5" />
 
         <TextView
@@ -51,7 +52,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine"
             android:text="@string/memo" tools:targetApi="o" />
 
         <Button
@@ -64,4 +65,5 @@
             tools:text="削除" />
 
     </LinearLayout>
+
 </android.support.v4.widget.NestedScrollView>

@@ -23,6 +23,10 @@ public class Store {
         return _ins;
     }
 
+    public void add(ArticleData dd) {
+        this.Data.add(dd);
+    }
+
     private void createTestData() {
         ArrayList<ArticleData> list = new ArrayList<ArticleData>();
         int max = 10;
@@ -77,7 +81,7 @@ public class Store {
                     3,
                     "The tension between individual and collective interests and the provision of sanc-tioning mechanisms have been identified as important building blocks of a theory of norm emergence. Correspondingly, most investigations focus on how social norms emerge through explicit bargaining and social exchange to overcome this ten-sion, and how sanctions enforce norm compliance. However, sanctioning presupposes the existence of the behavior at which it is directed, and the question of how behavior worth  sanctioning  can  emerge  tacitly  if  communication  is  not  possible  has  hitherto  received little attention. Here, we argue that game theory offers an ideal framework for theorizing  about  emergent  behavioral  regularities  and  show  how  latent  norms  can  emerge from actors’ recurring encounters in similar social dilemmas. We conduct two experiments  in  which  small  groups  of  subjects  interact  repeatedly  in  a  volunteer’s  dilemma. We vary the heterogeneity of group members in terms of their costs of coop-eration and the way they encounter each other in subsequent interactions. Our results show that subjects in homogeneous groups take turns at cooperating, whereas in het-erogeneous groups mostly the subjects with the lowest costs cooperate. The emer-gence of solitary cooperation is moderated by the way subjects encounter each other again and their other-regarding preferences.",
                     11,
-                    "",
+                    "評価方法が参考になる。結果については関係性が低い",
                     null));
         this.mockData.add(
                     new ArticleData("",
@@ -88,7 +92,7 @@ public class Store {
                             4,
                             "A conflict game simulating social traps in which a collective good can be provided by a volunteer is discussed and some solution concepts are analyzed. There is a greater incentive for “free riding” than for the production of the collective good at the cost of the volunteer. However, if everybody defects, all players will lose. Such a result is frequently produced by “diffusion of responsibility” as described by Darley and Latané (1968). In contrast to other social traps, a dominant strategy does not exist. Also, the mixed-equilibrium strategy yields very low payoffs. The expected gain is not greater than the payoff achieved by the nonequilibrium maximum strategy. Superrationality might be a way out of the trap. However, this concept lacks the desirable equilibrium property. Only in the free communication version of the game can a definitive answer to the question of a rational strategy be given.",
                             442,
-                            "",
+                            "有用",
                             null));
 
         this.mockData.add(

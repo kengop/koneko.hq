@@ -18,12 +18,13 @@
 
         <RatingBar
             android:id="@+id/ratingBar2"
-            style="@android:style/Widget.Holo.RatingBar"
+            style="@style/AppTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:isIndicator="true"
             android:numStars="5"
+            android:padding="16dp"
             android:rating="0.5" />
 
         <TextView
@@ -46,18 +47,20 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:layout_weight="1"
             android:ems="10"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine"
             android:text="@string/memo" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:layout_weight="1"
-            android:text="@string/button"
+            android:text="削除"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             tools:text="削除" />
 

@@ -107,6 +107,7 @@
                 android:background="@drawable/flame_style"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:textColor="@android:color/black"
                 app:layout_constraintEnd_toStartOf="@+id/imageButton2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

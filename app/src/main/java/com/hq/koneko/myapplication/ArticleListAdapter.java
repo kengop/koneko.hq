@@ -48,18 +48,18 @@ public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
         title.setText(item.Title);
         TextView author = (TextView)view.findViewById(R.id.author);
         author.setText(item.Author);
-//        title.setText(item.Title);
-//        title.setText(item.Title);
         RatingBar star = (RatingBar)view.findViewById(R.id.ratingBar);
         star.setRating(item.Rating);
         TextView journal = (TextView)view.findViewById(R.id.journal);
         journal.setText(item.Journal);
+
         TextView date = (TextView)view.findViewById(R.id.date);
         if(item.IssueDate==null) {
             date.setText("-");
         }else{
             date.setText(item.IssueDate.toString());
         }
+
         TextView add = (TextView)view.findViewById((R.id.addDate));
         if(item.AddDate==null){
             add.setText("-");

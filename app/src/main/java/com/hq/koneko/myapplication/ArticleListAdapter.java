@@ -55,10 +55,17 @@ public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
         TextView journal = (TextView)view.findViewById(R.id.journal);
         journal.setText(item.Journal);
         TextView date = (TextView)view.findViewById(R.id.date);
-        date.setText(item.IssueDate.toString());
+        if(date==null) {
+            date.setText("-");
+        }else{
+            date.setText(item.IssueDate.toString());
+        }
         TextView add = (TextView)view.findViewById((R.id.addDate));
-        add.setText(item.AddDate.toString());
-
+        if(add==null){
+            add.setText("-");
+        }else{
+            add.setText(item.AddDate.toString());
+        }
 
         return view;
     }

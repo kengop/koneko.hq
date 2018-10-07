@@ -23,6 +23,10 @@ public class Store {
         return _ins;
     }
 
+    public void add(ArticleData dd) {
+        this.Data.add(dd);
+    }
+
     private void createTestData() {
         ArrayList<ArticleData> list = new ArrayList<ArticleData>();
         int max = 10;

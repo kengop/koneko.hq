@@ -14,6 +14,7 @@ public class ArticleData {
     public Date  IssueDate;
     public Integer Rating;
     public String Abstract;
+    public String Url;
     public Integer CitationCount;
     public String Comment;
     public Date AddDate;
@@ -40,5 +41,31 @@ public class ArticleData {
         this.CitationCount = citationCount;
         this.Comment = comment;
         this.AddDate = addDate;
+    }
+
+    public ArticleData(
+            String id,
+            String title,
+            String author,
+            String journal,
+            Date issueDate,
+            Integer rating,
+            String abst,
+            Integer citationCount,
+            String comment,
+            Date addDate,
+            String url
+            ) {
+        this.ID = id;
+        this.Title = title;
+        this.Author = author;
+        this.Journal = journal;
+        this.IssueDate = issueDate;
+        this.Rating = rating;
+        this.Abstract = abst;
+        this.CitationCount = citationCount;
+        this.Comment = comment;
+        this.AddDate = addDate;
+        this.Url = url;
     }
 }

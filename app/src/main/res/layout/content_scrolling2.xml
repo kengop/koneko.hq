@@ -27,6 +27,7 @@
             android:stepSize="0.5" />
 
         <TextView
+            android:id="@+id/abst"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_margin="@dimen/text_margin"
@@ -35,6 +36,7 @@
             tools:text="Abstract" />
 
         <TextView
+            android:id="@+id/citation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/text_margin"
@@ -57,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button"
+            android:text="削除"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             tools:text="削除" />
 

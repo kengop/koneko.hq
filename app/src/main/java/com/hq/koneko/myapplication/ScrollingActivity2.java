@@ -1,11 +1,10 @@
 package com.hq.koneko.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 public class ScrollingActivity2 extends AppCompatActivity {
 
@@ -13,16 +12,32 @@ public class ScrollingActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling2);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
+
+        /** Intentを受け取る */
+        Intent intent = getIntent();
+        /** Intentの中身を取得 */
+        int id = intent.getIntExtra("INDEX", 0);
+        System.out.println(id);
+
+        /** 文字列をとってくる */
+        System.out.println("aaaaaaaa");
+
+        ArticleData d = Store.getInstance().Data.get(id);
+        RatingBar ratingBar = findViewById(R.id.ratingBar2);
+        ratingBar.setRating(d.Rating);
+
+        TextView abstView = findViewById(R.id.abst);
+        abstView.setText(d.Abstract);
+
+        TextView memoView = findViewById(R.id.editText);
+        memoView.setText(d.Comment);
+
+        TextView citationView = findViewById(R.id.citation);
+        citationView.setText("引用数: " + d.CitationCount);
+
+
+        TextView titleView = findViewById(R.id.detail_title);
+        titleView.setText(d.Title);
     }
 }

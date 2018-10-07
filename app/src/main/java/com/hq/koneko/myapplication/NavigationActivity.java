@@ -143,7 +143,9 @@ public class NavigationActivity extends AppCompatActivity
         // hint: positionはタップした行の番号
 //        ArticleData data = Store.getInstance().Data.get(position);
         // インテントにセット
-//        intent.putExtra("Id", _ここうめる_);
+
+        System.out.println(position);
+        intent.putExtra("INDEX", position);
 
         // SubActivityへ遷移
         startActivity(intent);

@@ -43,7 +43,7 @@ public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
         ArticleData item = mItems.get(position);
 
         // タイトルを設定
-        TextView title = (TextView)view.findViewById(R.id.title);
+        TextView title = (TextView)view.findViewById(R.id.detail_title);
         title.setText(item.Title);
         TextView author = (TextView)view.findViewById(R.id.author);
         author.setText(item.Author);

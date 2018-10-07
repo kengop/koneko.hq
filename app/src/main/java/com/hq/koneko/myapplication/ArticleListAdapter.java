@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -49,6 +50,22 @@ public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
         author.setText(item.Author);
 //        title.setText(item.Title);
 //        title.setText(item.Title);
+        RatingBar star = (RatingBar)view.findViewById(R.id.ratingBar);
+        star.setRating(item.Rating);
+        TextView journal = (TextView)view.findViewById(R.id.journal);
+        journal.setText(item.Journal);
+        TextView date = (TextView)view.findViewById(R.id.date);
+        if(item.IssueDate==null) {
+            date.setText("-");
+        }else{
+            date.setText(item.IssueDate.toString());
+        }
+        TextView add = (TextView)view.findViewById((R.id.addDate));
+        if(item.AddDate==null){
+            add.setText("-");
+        }else{
+            add.setText(item.AddDate.toString());
+        }
 
         return view;
     }

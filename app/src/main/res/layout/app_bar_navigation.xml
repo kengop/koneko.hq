@@ -22,55 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="239dp"
-                android:layout_height="59dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="キーワード"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="111dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="80dp"
-                android:text="詳細検索"
-                app:layout_constraintBaseline_toBaselineOf="@+id/spinner"
-                app:layout_constraintEnd_toStartOf="@+id/spinner"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="165dp"
-                android:layout_height="29dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
-                android:entries="@array/list"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/button8"
-                app:layout_constraintTop_toBottomOf="@+id/editText3"
-                app:layout_constraintVertical_bias="0.285" />
-
             <ImageButton
                 android:id="@+id/imageButton2"
-                android:layout_width="33dp"
-                android:layout_height="37dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorAccent"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/search_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/editText3"
@@ -78,29 +36,86 @@
                 app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="54dp"
-                android:layout_height="57dp"
+                android:id="@+id/button8"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="上下反転"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/search_button"
+                android:text="詳細検索"
+                android:textColor="@android:color/background_light"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spinner"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/button"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="137dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/search_button"
+                android:entries="@array/list"
+                android:popupBackground="#adabf5"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/button8"
                 app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/search_button"
+                android:fontFamily="monospace"
+                android:text="↑↓"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText3"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/spinner"
+                app:srcCompat="@android:drawable/ic_menu_more" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/flame_style"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_navigation" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>

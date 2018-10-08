@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -57,7 +58,9 @@ public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
         if(item.IssueDate==null) {
             date.setText("-");
         }else{
-            date.setText(item.IssueDate.toString());
+            Calendar datetime = Calendar.getInstance();
+            datetime.setTime(item.IssueDate);
+            date.setText("" + datetime.get(Calendar.YEAR));
         }
 
         TextView add = (TextView)view.findViewById((R.id.addDate));

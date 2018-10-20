@@ -7,40 +7,121 @@ import java.util.Date;
  */
 
 public class ArticleData {
-    public String ID;
-    public String Title;
-    public String Author;
-    public String Journal;
-    public Date  IssueDate;
-    public Integer Rating;
-    public String Abstract;
-    public String Url;
-    public Integer CitationCount;
-    public String Comment;
-    public Date AddDate;
+
+    private String id;
+    private String title;
+    private String author;
+    private String journal;
+    private Date issueDate;
+    private int rating;
+    private String abst;
+    private int citationCount;
+    private String comment;
+    private Date addDate;
+    private String url;
+
+    public String getId() {
+        return this.id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return this.author;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getJournal() {
+        return this.journal;
+    }
+    public void setJournal(String journal) {
+        this.journal = journal;
+    }
+
+    public Date getIssueDate() {
+        return this.issueDate;
+    }
+    public void setIssueDate(Date issuDate) {
+        this.issueDate = issuDate;
+    }
+
+    public int getRating() {
+        return this.rating;
+    }
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getAbstract() {
+        return this.abst;
+    }
+    public void setAbstract(String abst) {
+        this.abst = abst;
+    }
+
+    public int getCitationCount() {
+        return this.citationCount;
+    }
+    public void setCitationCount(int citationCount) {
+        this.citationCount = citationCount;
+    }
+
+    public String getComment() {
+        return this.comment;
+    }
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Date getAddDate() {
+        return this.addDate;
+    }
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
+    }
+
+    public String getUrl() {
+        return this.url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+
+    public ArticleData() {}
 
     public ArticleData(
             String id,
-               String title,
-               String author,
-               String journal,
-               Date issueDate,
-               Integer rating,
-               String abst,
-               Integer citationCount,
-               String comment,
-               Date addDate
-               ) {
-        this.ID = id;
-        this.Title = title;
-        this.Author = author;
-        this.Journal = journal;
-        this.IssueDate = issueDate;
-        this.Rating = rating;
-        this.Abstract = abst;
-        this.CitationCount = citationCount;
-        this.Comment = comment;
-        this.AddDate = addDate;
+            String title,
+            String author,
+            String journal,
+            Date issueDate,
+            Integer rating,
+            String abst,
+            Integer citationCount,
+            String comment,
+            Date addDate
+    ) {
+        this.setId(id);
+        this.setTitle(title);
+        this.setAuthor(author);
+        this.setJournal(journal);
+        this.setIssueDate(issueDate);
+        this.setRating(rating);
+        this.setAbstract(abst);
+        this.setCitationCount(citationCount);
+        this.setComment(comment);
+        this.setAddDate(addDate);
     }
 
     public ArticleData(
@@ -55,17 +136,17 @@ public class ArticleData {
             String comment,
             Date addDate,
             String url
-            ) {
-        this.ID = id;
-        this.Title = title;
-        this.Author = author;
-        this.Journal = journal;
-        this.IssueDate = issueDate;
-        this.Rating = rating;
-        this.Abstract = abst;
-        this.CitationCount = citationCount;
-        this.Comment = comment;
-        this.AddDate = addDate;
-        this.Url = url;
+    ) {
+        this.setId(id);
+        this.setTitle(title);
+        this.setAuthor(author);
+        this.setJournal(journal);
+        this.setIssueDate(issueDate);
+        this.setRating(rating);
+        this.setAbstract(abst);
+        this.setCitationCount(citationCount);
+        this.setComment(comment);
+        this.setAddDate(addDate);
+        this.setUrl(url);
     }
 }

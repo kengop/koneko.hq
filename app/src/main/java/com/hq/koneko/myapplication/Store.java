@@ -60,7 +60,7 @@ public class Store {
         int index = 1;
         for (ArticleData d: this.mockData) {
             ArticleData x = d;
-            x.ID = "" + index;
+            x.setId("" + index);
 
             list.add(x);
         }

@@ -46,28 +46,28 @@ public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
 
         // タイトルを設定
         TextView title = (TextView)view.findViewById(R.id.detail_title);
-        title.setText(item.Title);
+        title.setText(item.getTitle());
         TextView author = (TextView)view.findViewById(R.id.author);
-        author.setText(item.Author);
+        author.setText(item.getAuthor());
         RatingBar star = (RatingBar)view.findViewById(R.id.ratingBar);
-        star.setRating(item.Rating);
+        star.setRating(item.getRating());
         TextView journal = (TextView)view.findViewById(R.id.journal);
-        journal.setText(item.Journal);
+        journal.setText(item.getJournal());
 
         TextView date = (TextView)view.findViewById(R.id.date);
-        if(item.IssueDate==null) {
+        if(item.getIssueDate() == null) {
             date.setText("-");
         }else{
             Calendar datetime = Calendar.getInstance();
-            datetime.setTime(item.IssueDate);
+            datetime.setTime(item.getIssueDate());
             date.setText("" + datetime.get(Calendar.YEAR));
         }
 
         TextView add = (TextView)view.findViewById((R.id.addDate));
-        if(item.AddDate==null){
+        if(item.getAddDate() == null){
             add.setText("-");
         }else{
-            add.setText(item.AddDate.toString());
+            add.setText(item.getAddDate().toString());
         }
 
         return view;

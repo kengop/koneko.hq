@@ -25,19 +25,19 @@ public class ScrollingActivity2 extends AppCompatActivity {
 
         ArticleData d = Store.getInstance().Data.get(id);
         RatingBar ratingBar = findViewById(R.id.ratingBar2);
-        ratingBar.setRating(d.Rating);
+        ratingBar.setRating(d.getRating());
 
         TextView abstView = findViewById(R.id.abst);
-        abstView.setText(d.Abstract);
+        abstView.setText(d.getAbstract());
 
         TextView memoView = findViewById(R.id.editText);
-        memoView.setText(d.Comment);
+        memoView.setText(d.getComment());
 
         TextView citationView = findViewById(R.id.citation);
-        citationView.setText("引用数: " + d.CitationCount);
+        citationView.setText("引用数: " + d.getCitationCount());
 
 
         TextView titleView = findViewById(R.id.detail_title);
-        titleView.setText(d.Title);
+        titleView.setText(d.getTitle());
     }
 }

@@ -11,6 +11,10 @@ public class MainActivity extends AppCompatActivity {
    	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		Store.getInstance().SetContext(getApplicationContext());
+		Store.getInstance().LoadArticles();
+
 		// タイトルを非表示にします。
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//

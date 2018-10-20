@@ -19,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class NavigationActivity extends AppCompatActivity
@@ -63,6 +65,9 @@ public class NavigationActivity extends AppCompatActivity
 
         // クリックリスナーをセット
         myListView.setOnItemClickListener(this);
+
+        Collections.sort(items, new DateComparator());
+        this._adapterX.notifyDataSetChanged();
 
     }
 

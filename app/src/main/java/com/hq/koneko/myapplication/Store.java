@@ -27,28 +27,6 @@ public class Store {
         this.Data.add(dd);
     }
 
-    private void createTestData() {
-        ArrayList<ArticleData> list = new ArrayList<ArticleData>();
-        int max = 10;
-        Date issueDate = new Date();
-        Date d = new Date();
-        Random r = new Random();
-        for (int i = 0; i < max; i++) {
-            ArticleData x = new ArticleData("" + i,
-                    "title" + i,
-                    "author",
-                    "journal",
-                    issueDate,
-                    r.nextInt(5),
-                    "abst",
-                    i,
-                    "comment",
-                    d);
-            list.add(x);
-        }
-        this.Data = list;
-    }
-
     private void createTestData2() {
         try {
             this.createMockData();

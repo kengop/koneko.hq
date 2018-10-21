@@ -16,8 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,6 +30,7 @@ public class NavigationActivity extends AppCompatActivity
         AdapterView.OnItemClickListener {
 
     private ArrayAdapter<ArticleData> _adapterX;
+    ArrayList<ArticleData> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class NavigationActivity extends AppCompatActivity
         ListView myListView = (ListView) findViewById(R.id.myListView);
 
         // データを準備
-        ArrayList<ArticleData> items = new ArrayList<>();
+
         for(ArticleData article : Store.getInstance().Data) {
             items.add(article);
         }
@@ -68,6 +71,7 @@ public class NavigationActivity extends AppCompatActivity
 
         Collections.sort(items, new DateComparator());
         this._adapterX.notifyDataSetChanged();
+
 
     }
 
@@ -146,4 +150,14 @@ public class NavigationActivity extends AppCompatActivity
         // SubActivityへ遷移
         startActivity(intent);
     }
+
+    // myListViewの昇順/降順を切り替える
+    public void onSortListView(View view) {
+        // itemsの要素の順序を逆する
+        Collections.reverse(this.items);
+        // myListViewにバインドした_adapterXに対して、
+        // 表示する要素(items)に変更(並び順や要素の数など)があったことを通知する
+        this._adapterX.notifyDataSetChanged();
+    }
+
 }

@@ -7,6 +7,6 @@ public class DateComparator implements Comparator<ArticleData>
     @Override
     public int compare(ArticleData lhs, ArticleData rhs)
     {
-        return rhs.IssueDate.compareTo(lhs.IssueDate);
+        return rhs.getIssueDate().compareTo(lhs.getIssueDate());
     }
 }

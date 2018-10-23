@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -69,10 +70,20 @@ public class NavigationActivity extends AppCompatActivity
         // クリックリスナーをセット
         myListView.setOnItemClickListener(this);
 
-        Collections.sort(items, new DateComparator());
+        ItemComparator itemdata = new ItemComparator();
+        Collections.sort(items,itemdata.new AddDateComparator());
         this._adapterX.notifyDataSetChanged();
 
-
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                onSpinnerSelected(spinner);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     @Override
@@ -157,6 +168,20 @@ public class NavigationActivity extends AppCompatActivity
         Collections.reverse(this.items);
         // myListViewにバインドした_adapterXに対して、
         // 表示する要素(items)に変更(並び順や要素の数など)があったことを通知する
+        this._adapterX.notifyDataSetChanged();
+    }
+
+    public void onSpinnerSelected(Spinner spinner){
+        int position = spinner.getSelectedItemPosition();
+        ItemComparator itemdata = new ItemComparator();
+        if(position==0){
+            Collections.sort(items,itemdata.new AddDateComparator());
+        } else if(position==1){
+            Collections.sort(items,itemdata.new IssueDateComparator());
+        } else if(position==2){
+            Collections.sort(items,itemdata.new RatingComparator());
+        } else{
+        }
         this._adapterX.notifyDataSetChanged();
     }
 

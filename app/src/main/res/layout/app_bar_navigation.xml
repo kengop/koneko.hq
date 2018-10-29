@@ -19,6 +19,8 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <android.support.constraint.ConstraintLayout
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

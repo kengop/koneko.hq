@@ -10,18 +10,20 @@
         android:id="@+id/ratingBar"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="82dp"
-        android:layout_height="16dp"
+        android:layout_height="18dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/author"
         android:layout_width="0dp"
-        android:layout_height="18dp"
+        android:layout_height="21dp"
         android:layout_marginStart="16dp"
         android:text="Author"
         android:textColor="@android:color/black"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/journal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -31,7 +33,7 @@
     <TextView
         android:id="@+id/detail_title"
         android:layout_width="0dp"
-        android:layout_height="27dp"
+        android:layout_height="26dp"
         android:layout_marginStart="16dp"
         android:text="Title"
         android:textColor="@android:color/black"
@@ -46,36 +48,53 @@
 
     <TextView
         android:id="@+id/journal"
-        android:layout_width="222dp"
+        android:layout_width="0dp"
         android:layout_height="19dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:text="Journal"
         android:textColor="@android:color/black"
+        android:textSize="14sp"
         android:textStyle="italic"
-        app:layout_constraintEnd_toStartOf="@+id/date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/date"
         app:layout_constraintTop_toBottomOf="@+id/author" />
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
+        android:layout_marginStart="16dp"
         android:text="Date"
         android:textColor="@android:color/black"
+        android:textSize="14sp"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/journal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/author" />
 
     <TextView
         android:id="@+id/addDate"
         android:layout_width="147dp"
-        android:layout_height="16dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="8dp"
         android:text="Add Date"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/ratingBar"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/space"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/journal" />
 
 </android.support.constraint.ConstraintLayout>

@@ -25,21 +25,22 @@
             android:layout_height="wrap_content">
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/searchButton"
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/search_button"
+                android:onClick="onSearch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/editText3"
+                app:layout_constraintStart_toEndOf="@+id/keywordBox"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="150dp"
+                android:layout_width="160dp"
                 android:layout_height="30dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="8dp"
@@ -48,17 +49,18 @@
                 android:background="@drawable/search_button"
                 android:text="詳細検索"
                 android:textColor="@android:color/background_light"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/spinner"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText3"
+                app:layout_constraintTop_toBottomOf="@+id/keywordBox"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="150dp"
+                android:layout_width="160dp"
                 android:layout_height="30dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="8dp"
@@ -72,7 +74,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/button"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/button8"
-                app:layout_constraintTop_toBottomOf="@+id/editText3" />
+                app:layout_constraintTop_toBottomOf="@+id/keywordBox" />
 
             <Button
                 android:id="@+id/reverse_button"
@@ -80,6 +82,7 @@
                 android:layout_height="30dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/search_button"
                 android:fontFamily="monospace"
@@ -89,7 +92,8 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText3"
+                app:layout_constraintStart_toEndOf="@+id/spinner"
+                app:layout_constraintTop_toBottomOf="@+id/keywordBox"
                 app:layout_constraintVertical_bias="1.0" />
 
             <ImageView
@@ -102,7 +106,7 @@
                 app:srcCompat="@android:drawable/ic_menu_more" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/keywordBox"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="16dp"
@@ -110,9 +114,9 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/flame_style"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:textColor="@android:color/black"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                app:layout_constraintEnd_toStartOf="@+id/searchButton"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -191,18 +191,17 @@ public class NavigationActivity extends AppCompatActivity
     public void onSearch(View v) {
         EditText keywordBox = findViewById(R.id.keywordBox);
         String keyword = keywordBox.getText().toString();
-        ArrayList<ArticleData> searchedItems = new ArrayList<>();
-        for(ArticleData itemData : items){
+        items.clear();
+        for(ArticleData itemData : Store.getInstance().Data){
             String title = itemData.getTitle();
             int result = title.indexOf(keyword);
             if(result!=-1){
-                searchedItems.add(itemData);
+                items.add(itemData);
+                }
             }
+            ItemComparator itemComparator = new ItemComparator();
+            Collections.sort(items, itemComparator.new AddDateComparator());
+            this._adapterX.notifyDataSetChanged();
         }
-        items = searchedItems;
-        ItemComparator itemComparator = new ItemComparator();
-        Collections.sort(items,itemComparator.new AddDateComparator());
-        this._adapterX.notifyDataSetChanged();
-    }
 
 }

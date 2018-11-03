@@ -16,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -70,8 +73,8 @@ public class NavigationActivity extends AppCompatActivity
         // クリックリスナーをセット
         myListView.setOnItemClickListener(this);
 
-        ItemComparator itemdata = new ItemComparator();
-        Collections.sort(items,itemdata.new AddDateComparator());
+        ItemComparator itemComparator = new ItemComparator();
+        Collections.sort(items,itemComparator.new AddDateComparator());
         this._adapterX.notifyDataSetChanged();
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -173,16 +176,32 @@ public class NavigationActivity extends AppCompatActivity
 
     public void onSpinnerSelected(Spinner spinner){
         int position = spinner.getSelectedItemPosition();
-        ItemComparator itemdata = new ItemComparator();
+        ItemComparator itemComparator = new ItemComparator();
         if(position==0){
-            Collections.sort(items,itemdata.new AddDateComparator());
+            Collections.sort(items,itemComparator.new AddDateComparator());
         } else if(position==1){
-            Collections.sort(items,itemdata.new IssueDateComparator());
+            Collections.sort(items,itemComparator.new IssueDateComparator());
         } else if(position==2){
-            Collections.sort(items,itemdata.new RatingComparator());
+            Collections.sort(items,itemComparator.new RatingComparator());
         } else{
         }
         this._adapterX.notifyDataSetChanged();
     }
+
+    public void onSearch(View v) {
+        EditText keywordBox = findViewById(R.id.keywordBox);
+        String keyword = keywordBox.getText().toString();
+        items.clear();
+        for(ArticleData itemData : Store.getInstance().Data){
+            String title = itemData.getTitle();
+            int result = title.indexOf(keyword);
+            if(result!=-1){
+                items.add(itemData);
+                }
+            }
+            ItemComparator itemComparator = new ItemComparator();
+            Collections.sort(items, itemComparator.new AddDateComparator());
+            this._adapterX.notifyDataSetChanged();
+        }
 
 }

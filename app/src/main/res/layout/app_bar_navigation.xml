@@ -47,6 +47,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/search_button"
+                android:onClick="onAdvancedSearch"
                 android:text="詳細検索"
                 android:textColor="@android:color/background_light"
                 android:textSize="18sp"

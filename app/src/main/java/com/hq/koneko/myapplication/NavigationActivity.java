@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.PopupMenu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,8 +20,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 
 import java.lang.reflect.Array;
@@ -204,4 +207,15 @@ public class NavigationActivity extends AppCompatActivity
             this._adapterX.notifyDataSetChanged();
         }
 
+        public void onAdvancedSearch(View button){
+            View popLayout = getLayoutInflater().inflate(R.layout.advanced_search,null);
+            PopupWindow popupWin = new PopupWindow();
+            popupWin.setContentView(popLayout);
+            popupWin.setOutsideTouchable(true);
+            popupWin.setFocusable(true);
+            popupWin.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
+            popupWin.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
+            popupWin.setBackgroundDrawable(getDrawable(R.drawable.flame_style));
+            popupWin.showAsDropDown(button,0,0);
+        }
 }

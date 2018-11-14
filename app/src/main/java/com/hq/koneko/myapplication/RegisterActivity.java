@@ -23,7 +23,7 @@ import java.util.Date;
 public class RegisterActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler();
-    private ArticleData newArticle;
+    private Article newArticle;
     private WebView webView;
 
     @Override
@@ -140,15 +140,15 @@ public class RegisterActivity extends AppCompatActivity {
                         + abstractText;
                 System.out.println(artStr);
 
-                // create ArticleData
+                // create Article
                 RatingBar ratingBar = findViewById(R.id.ratingBar);
                 EditText editText = findViewById(R.id.editText2);
 
-                newArticle = new ArticleData("" + (Store.getInstance().Data.size() + 1),
+                newArticle = new Article("" + (Store.getInstance().Data.size() + 1),
                         title, author, pub, publishDate, (int)ratingBar.getRating(), abstractText,
                         0, editText.getText().toString(), new Date(), src);
 
-                // save ArticleData
+                // save Article
                 Store.getInstance().Data.add(newArticle);
 
                 // reset form status

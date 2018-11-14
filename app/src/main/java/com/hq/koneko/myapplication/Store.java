@@ -1,8 +1,9 @@
 package com.hq.koneko.myapplication;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.os.AsyncTask;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,10 @@ import java.util.List;
 public class Store {
     private static Store _ins = new Store();
 
-    private Store() {}
+    private Store() {
+    }
 
-    public ArrayList<ArticleData> Data = new ArrayList<>();
+    public ArrayList<Article> Data = new ArrayList<>();
 
     private Context context;
     public void SetContext(Context context) {
@@ -26,30 +28,64 @@ public class Store {
         return _ins;
     }
 
-    public void add(ArticleData dd) {
+    public void add(Article dd) {
         this.Data.add(dd);
     }
 
     public void LoadArticles() {
-        List<ArticleData> loadedList;
-        try {
-            loadedList = this.createMockData();
-
-            int index = 1;
-            for (ArticleData d: loadedList) {
-                ArticleData x = d;
-            x.setId("" + index);
-
-                this.Data.add(x);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.loadFromDatabase();
     }
 
-    private List<ArticleData> createMockData() throws ParseException {
-        TsvReader reader = new TsvReader();
-        return reader.readTestData(this.context);
+    private void loadFromDatabase() {
+        new AsyncTask<Integer, Integer, List<Article>>() {
+
+            private Context appContext;
+            private ArrayList<Article> result;
+            public AsyncTask<Integer, Integer, List<Article>> SetContext(Context context, ArrayList<Article> result) {
+                this.appContext = context;
+                this.result = result;
+                return this;
+            }
+            @Override
+            protected void onPostExecute(List<Article> result) {
+                this.result.addAll(result);
+            }
+            @Override
+            protected List<Article> doInBackground(Integer... integers) {
+                boolean isDebugMode = false;
+                // todo: to singleton
+                AppDatabase db;
+                ArrayList<Article> at = new ArrayList<>();
+
+                if (isDebugMode) {
+                    db = Room.inMemoryDatabaseBuilder(this.appContext,
+                            AppDatabase.class).build();
+
+                    List<Article> loadedList;
+                    TsvReader reader = new TsvReader();
+                    loadedList = reader.readTestData(this.appContext);
+
+                    for (Article a: loadedList) {
+                        db.articleDao().insertAll(a);
+                    }
+                    at.addAll(loadedList);
+                } else {
+                    db = Room.databaseBuilder(this.appContext,
+                            AppDatabase.class, "database-name").build();
+                    at.addAll(db.articleDao().getAll());
+                }
+
+                // for Debug
+                for (Article a: at) {
+                    System.out.println(a.getTitle());
+                }
+
+                return at;
+            }
+        }
+        .SetContext(this.context, this.Data)
+        .execute();
+
     }
 
 }

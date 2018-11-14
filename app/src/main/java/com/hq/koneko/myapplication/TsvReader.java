@@ -18,9 +18,9 @@ import java.util.ArrayList;
 public class TsvReader {
     private static final String TestDataFileName = "testdata.tsv";
 
-    public ArrayList<ArticleData> readTestData(Context context) {
+    public ArrayList<Article> readTestData(Context context) {
         AssetManager assetManager = context.getResources().getAssets();
-        ArrayList<ArticleData> result = new ArrayList<>();
+        ArrayList<Article> result = new ArrayList<>();
 
         InputStream inputStream = null;
         try {
@@ -41,7 +41,7 @@ public class TsvReader {
             while ((line = bufferReader.readLine()) != null) {
 
                 //タブ区切りで１つづつ配列に入れる
-                ArticleData data = new ArticleData();
+                Article data = new Article();
                 String[] rowData = line.split("\t");
 
                 //TSVの左([0]番目)から順番にセット
@@ -52,7 +52,7 @@ public class TsvReader {
                 data.setJournal(rowData[3]);
                 data.setIssueDate(isoFmt.parse(rowData[4]));
                 data.setRating(Integer.parseInt(rowData[5]));
-                data.setAbstract(rowData[6]);
+                data.setAbst(rowData[6]);
                 data.setCitationCount(Integer.parseInt(rowData[7]));
                 data.setComment(rowData[8]);
                 data.setAddDate(isoFmt.parse(rowData[9]));

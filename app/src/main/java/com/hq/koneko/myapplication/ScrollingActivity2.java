@@ -23,12 +23,12 @@ public class ScrollingActivity2 extends AppCompatActivity {
         /** 文字列をとってくる */
         System.out.println("aaaaaaaa");
 
-        ArticleData d = Store.getInstance().Data.get(id);
+        Article d = Store.getInstance().Data.get(id);
         RatingBar ratingBar = findViewById(R.id.ratingBar2);
         ratingBar.setRating(d.getRating());
 
         TextView abstView = findViewById(R.id.abst);
-        abstView.setText(d.getAbstract());
+        abstView.setText(d.getAbst());
 
         TextView memoView = findViewById(R.id.editText);
         memoView.setText(d.getComment());

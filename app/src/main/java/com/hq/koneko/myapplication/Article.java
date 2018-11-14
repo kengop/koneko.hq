@@ -1,17 +1,26 @@
 package com.hq.koneko.myapplication;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.Date;
 
 /**
  * Created by k-inaba on 2018/10/06.
  */
+@Entity
+public class Article {
 
-public class ArticleData {
-
+    @PrimaryKey(autoGenerate = true)
+    public int uid;
     private String id;
     private String title;
     private String author;
     private String journal;
+
+
+
     private Date issueDate;
     private int rating;
     private String abst;
@@ -62,10 +71,10 @@ public class ArticleData {
         this.rating = rating;
     }
 
-    public String getAbstract() {
+    public String getAbst() {
         return this.abst;
     }
-    public void setAbstract(String abst) {
+    public void setAbst(String abst) {
         this.abst = abst;
     }
 
@@ -98,9 +107,10 @@ public class ArticleData {
     }
 
 
-    public ArticleData() {}
+    public Article() {}
 
-    public ArticleData(
+    @Ignore
+    public Article(
             String id,
             String title,
             String author,
@@ -118,13 +128,14 @@ public class ArticleData {
         this.setJournal(journal);
         this.setIssueDate(issueDate);
         this.setRating(rating);
-        this.setAbstract(abst);
+        this.setAbst(abst);
         this.setCitationCount(citationCount);
         this.setComment(comment);
         this.setAddDate(addDate);
     }
 
-    public ArticleData(
+    @Ignore
+    public Article(
             String id,
             String title,
             String author,
@@ -143,7 +154,7 @@ public class ArticleData {
         this.setJournal(journal);
         this.setIssueDate(issueDate);
         this.setRating(rating);
-        this.setAbstract(abst);
+        this.setAbst(abst);
         this.setCitationCount(citationCount);
         this.setComment(comment);
         this.setAddDate(addDate);

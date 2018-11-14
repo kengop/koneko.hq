@@ -3,8 +3,6 @@ package com.hq.koneko.myapplication;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,25 +14,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         AdapterView.OnItemClickListener {
 
-    private ArrayAdapter<ArticleData> _adapterX;
-    ArrayList<ArticleData> items = new ArrayList<>();
+    private ArrayAdapter<Article> _adapterX;
+    ArrayList<Article> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +49,7 @@ public class NavigationActivity extends AppCompatActivity
 
         // データを準備
 
-        for(ArticleData article : Store.getInstance().Data) {
+        for(Article article : Store.getInstance().Data) {
             items.add(article);
         }
 
@@ -155,7 +147,7 @@ public class NavigationActivity extends AppCompatActivity
 
         // 詳細に渡すデータをここで決める
         // hint: positionはタップした行の番号
-//        ArticleData data = Store.getInstance().Data.get(position);
+//        Article data = Store.getInstance().Data.get(position);
         // インテントにセット
 
         System.out.println(position);
@@ -192,7 +184,7 @@ public class NavigationActivity extends AppCompatActivity
         EditText keywordBox = findViewById(R.id.keywordBox);
         String keyword = keywordBox.getText().toString();
         items.clear();
-        for(ArticleData itemData : Store.getInstance().Data){
+        for(Article itemData : Store.getInstance().Data){
             String title = itemData.getTitle();
             int result = title.indexOf(keyword);
             if(result!=-1){

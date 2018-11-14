@@ -16,13 +16,13 @@ import java.util.List;
  * Created by k-inaba on 2018/10/06.
  */
 
-public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
+public class ArticleListAdapter extends ArrayAdapter<Article> {
 
     private int mResource;
-    private List<ArticleData> mItems;
+    private List<Article> mItems;
     private LayoutInflater mInflater;
 
-    public ArticleListAdapter(@NonNull Context context, int resource, List<ArticleData> items) {
+    public ArticleListAdapter(@NonNull Context context, int resource, List<Article> items) {
         super(context, resource, items);
 
         mResource = resource;
@@ -42,7 +42,7 @@ public class ArticleListAdapter extends ArrayAdapter<ArticleData> {
         }
 
         // リストビューに表示する要素を取得
-        ArticleData item = mItems.get(position);
+        Article item = mItems.get(position);
 
         // タイトルを設定
         TextView title = (TextView)view.findViewById(R.id.detail_title);

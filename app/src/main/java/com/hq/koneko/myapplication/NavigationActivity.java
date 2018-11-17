@@ -18,12 +18,14 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import java.lang.reflect.Array;
@@ -60,7 +62,7 @@ public class NavigationActivity extends AppCompatActivity
 
         // データを準備
 
-        for(ArticleData article : Store.getInstance().Data) {
+        for (ArticleData article : Store.getInstance().Data) {
             items.add(article);
         }
 
@@ -77,7 +79,7 @@ public class NavigationActivity extends AppCompatActivity
         myListView.setOnItemClickListener(this);
 
         ItemComparator itemComparator = new ItemComparator();
-        Collections.sort(items,itemComparator.new AddDateComparator());
+        Collections.sort(items, itemComparator.new AddDateComparator());
         this._adapterX.notifyDataSetChanged();
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -86,6 +88,7 @@ public class NavigationActivity extends AppCompatActivity
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 onSpinnerSelected(spinner);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -177,16 +180,16 @@ public class NavigationActivity extends AppCompatActivity
         this._adapterX.notifyDataSetChanged();
     }
 
-    public void onSpinnerSelected(Spinner spinner){
+    public void onSpinnerSelected(Spinner spinner) {
         int position = spinner.getSelectedItemPosition();
         ItemComparator itemComparator = new ItemComparator();
-        if(position==0){
-            Collections.sort(items,itemComparator.new AddDateComparator());
-        } else if(position==1){
-            Collections.sort(items,itemComparator.new IssueDateComparator());
-        } else if(position==2){
-            Collections.sort(items,itemComparator.new RatingComparator());
-        } else{
+        if (position == 0) {
+            Collections.sort(items, itemComparator.new AddDateComparator());
+        } else if (position == 1) {
+            Collections.sort(items, itemComparator.new IssueDateComparator());
+        } else if (position == 2) {
+            Collections.sort(items, itemComparator.new RatingComparator());
+        } else {
         }
         this._adapterX.notifyDataSetChanged();
     }
@@ -195,27 +198,84 @@ public class NavigationActivity extends AppCompatActivity
         EditText keywordBox = findViewById(R.id.keywordBox);
         String keyword = keywordBox.getText().toString();
         items.clear();
-        for(ArticleData itemData : Store.getInstance().Data){
+        for (ArticleData itemData : Store.getInstance().Data) {
             String title = itemData.getTitle();
             int result = title.indexOf(keyword);
-            if(result!=-1){
+            if (result != -1) {
                 items.add(itemData);
+            }
+        }
+        ItemComparator itemComparator = new ItemComparator();
+        Collections.sort(items, itemComparator.new AddDateComparator());
+        this._adapterX.notifyDataSetChanged();
+    }
+
+    public void onAdvancedSearch(View button){
+        View popLayout = getLayoutInflater().inflate(R.layout.advanced_search,null);
+        PopupWindow popupWin = new PopupWindow();
+        popupWin.setContentView(popLayout);
+        popupWin.setOutsideTouchable(true);
+        popupWin.setFocusable(true);
+        popupWin.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
+        popupWin.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
+        popupWin.setBackgroundDrawable(getDrawable(R.drawable.flame_style));
+        popupWin.showAsDropDown(button,0,0);
+    }
+
+    public void onCustomizedSearch(View button){
+        RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
+        int checkedId = radioGroup.getCheckedRadioButtonId();
+        CheckBox inTitle = (CheckBox)findViewById(R.id.inTitle);
+        CheckBox inAbst = (CheckBox)findViewById(R.id.inAbst);
+        CheckBox inMemo = (CheckBox)findViewById(R.id.inMemo);
+        EditText keywordBox = findViewById(R.id.keywordBox);
+        String keyword = keywordBox.getText().toString();
+        items.clear();
+        if(checkedId == R.id.andSearch){
+            //AND検索のとき
+            for(ArticleData itemData : Store.getInstance().Data){
+                String title = itemData.getTitle();
+                int inTitleResult = title.indexOf(keyword);
+                String abst = itemData.getAbstract();
+                int inAbstResult = abst.indexOf(keyword);
+                String memo = itemData.getComment();
+                int inMemoResult = memo.indexOf(keyword);
+                if(inTitle.isChecked() && inTitleResult == -1){
+                    continue;
+                }else if(inAbst.isChecked() && inAbstResult == -1){
+                    continue;
+                }else if(inMemo.isChecked() && inMemoResult == -1) {
+                    continue;
+                }else if(!inTitle.isChecked() && !inAbst.isChecked() && !inMemo.isChecked()){
+                    break;
+                }else {
+                    items.add(itemData);
                 }
             }
-            ItemComparator itemComparator = new ItemComparator();
-            Collections.sort(items, itemComparator.new AddDateComparator());
-            this._adapterX.notifyDataSetChanged();
+        }else if(checkedId == R.id.orSearch){
+            //OR検索のとき
+            for(ArticleData itemData : Store.getInstance().Data){
+                String title = itemData.getTitle();
+                int inTitleResult = title.indexOf(keyword);
+                String abst = itemData.getAbstract();
+                int inAbstResult = abst.indexOf(keyword);
+                String memo = itemData.getComment();
+                int inMemoResult = memo.indexOf(keyword);
+                if(inTitle.isChecked() && inTitleResult != -1){
+                    items.add(itemData);
+                    continue;
+                }else if(inAbst.isChecked() && inAbstResult != -1){
+                    items.add(itemData);
+                    continue;
+                }else if(inMemo.isChecked() && inMemoResult != -1){
+                    items.add(itemData);
+                }
+            }
         }
+        ItemComparator itemComparator = new ItemComparator();
+        Collections.sort(items, itemComparator.new AddDateComparator());
+        this._adapterX.notifyDataSetChanged();
+    }
 
-        public void onAdvancedSearch(View button){
-            View popLayout = getLayoutInflater().inflate(R.layout.advanced_search,null);
-            PopupWindow popupWin = new PopupWindow();
-            popupWin.setContentView(popLayout);
-            popupWin.setOutsideTouchable(true);
-            popupWin.setFocusable(true);
-            popupWin.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
-            popupWin.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-            popupWin.setBackgroundDrawable(getDrawable(R.drawable.flame_style));
-            popupWin.showAsDropDown(button,0,0);
-        }
+
 }

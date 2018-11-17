@@ -67,6 +67,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/search_button"
+        android:onClick="onCustomizedSearch"
         android:text="この条件で検索"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"

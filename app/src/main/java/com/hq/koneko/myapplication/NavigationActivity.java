@@ -210,24 +210,28 @@ public class NavigationActivity extends AppCompatActivity
         this._adapterX.notifyDataSetChanged();
     }
 
+    private PopupWindow popupWin;
     public void onAdvancedSearch(View button){
-        View popLayout = getLayoutInflater().inflate(R.layout.advanced_search,null);
-        PopupWindow popupWin = new PopupWindow();
-        popupWin.setContentView(popLayout);
-        popupWin.setOutsideTouchable(true);
-        popupWin.setFocusable(true);
-        popupWin.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
-        popupWin.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-        popupWin.setBackgroundDrawable(getDrawable(R.drawable.flame_style));
-        popupWin.showAsDropDown(button,0,0);
+        if (this.popupWin == null) {
+            View popLayout = getLayoutInflater().inflate(R.layout.advanced_search, null);
+            this.popupWin = new PopupWindow();
+            this.popupWin.setContentView(popLayout);
+            this.popupWin.setOutsideTouchable(true);
+            this.popupWin.setFocusable(true);
+            this.popupWin.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
+            this.popupWin.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
+            this.popupWin.setBackgroundDrawable(getDrawable(R.drawable.flame_style));
+        }
+            this.popupWin.showAsDropDown(button, 0, 0);
     }
 
     public void onCustomizedSearch(View button){
-        RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
+        View popupView = this.popupWin.getContentView();
+        RadioGroup radioGroup = (RadioGroup)popupView.findViewById(R.id.radioGroup);
         int checkedId = radioGroup.getCheckedRadioButtonId();
-        CheckBox inTitle = (CheckBox)findViewById(R.id.inTitle);
-        CheckBox inAbst = (CheckBox)findViewById(R.id.inAbst);
-        CheckBox inMemo = (CheckBox)findViewById(R.id.inMemo);
+        CheckBox inTitle = (CheckBox)popupView.findViewById(R.id.inTitle);
+        CheckBox inAbst = (CheckBox)popupView.findViewById(R.id.inAbst);
+        CheckBox inMemo = (CheckBox)popupView.findViewById(R.id.inMemo);
         EditText keywordBox = findViewById(R.id.keywordBox);
         String keyword = keywordBox.getText().toString();
         items.clear();
@@ -275,6 +279,7 @@ public class NavigationActivity extends AppCompatActivity
         ItemComparator itemComparator = new ItemComparator();
         Collections.sort(items, itemComparator.new AddDateComparator());
         this._adapterX.notifyDataSetChanged();
+        popupWin.dismiss();
     }
 
 

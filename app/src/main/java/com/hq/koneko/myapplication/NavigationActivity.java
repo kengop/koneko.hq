@@ -194,22 +194,6 @@ public class NavigationActivity extends AppCompatActivity
         this._adapterX.notifyDataSetChanged();
     }
 
-    public void onSearch(View v) {
-        EditText keywordBox = findViewById(R.id.keywordBox);
-        String keyword = keywordBox.getText().toString();
-        items.clear();
-        for (ArticleData itemData : Store.getInstance().Data) {
-            String title = itemData.getTitle();
-            int result = title.indexOf(keyword);
-            if (result != -1) {
-                items.add(itemData);
-            }
-        }
-        ItemComparator itemComparator = new ItemComparator();
-        Collections.sort(items, itemComparator.new AddDateComparator());
-        this._adapterX.notifyDataSetChanged();
-    }
-
     private PopupWindow popupWin;
     public void onAdvancedSearch(View button){
         if (this.popupWin == null) {
@@ -279,7 +263,9 @@ public class NavigationActivity extends AppCompatActivity
         ItemComparator itemComparator = new ItemComparator();
         Collections.sort(items, itemComparator.new AddDateComparator());
         this._adapterX.notifyDataSetChanged();
-        popupWin.dismiss();
+        if(this.popupWin.isShowing()) {
+            popupWin.dismiss();
+        }
     }
 
 

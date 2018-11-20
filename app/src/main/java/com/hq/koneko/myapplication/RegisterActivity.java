@@ -28,6 +28,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Store.getInstance().SetContext(getApplicationContext());
+        Store.getInstance().LoadArticles();
+        setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
